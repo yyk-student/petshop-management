@@ -68,16 +68,13 @@
                 <div class="w-100"></div>
 		            <div class="col-md-12">
 		            	<div class="form-group">
-		            		<label for="country">Country</label>
+		            		<label for="country">Country *</label>
 		            		<div class="select-wrap">
 		                  <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 		                  <select name="country" id="country" class="form-control" required="">
-		                  	<option value="india">India </option>
-		                    <option value="united states">United States</option>
-		                    <option value="china">China</option>
-		                    <option value="south korea">South Korea</option>
-		                    <option value="hongkong">Hongkong</option>
-		                    <option value="japan">Japan</option>
+							<option value="hongkong">Hong Kong</option>
+		                  	<option value="macau">Macau</option>
+		                    <option value="shenzhen">Shenzhen</option>
 		                  </select>
 		                </div>
 		            	</div>
@@ -85,19 +82,19 @@
 		            <div class="w-100"></div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
-	                	<label for="streetaddress">Street Address</label>
+	                	<label for="streetaddress">Street Address *</label>
 	                  <input type="text" required="" class="form-control" name="street" placeholder="House number and street name">
 	                </div>
 		            </div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
-	                  <input type="text" class="form-control" required="" name="apt" placeholder="Appartment, suite, unit etc: (optional)">
+	                  <input type="text" class="form-control" name="apt" placeholder="Appartment, suite, unit etc: (optional)">
 	                </div>
 		            </div>
 		            <div class="w-100"></div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
-	                	<label for="towncity">Town / City</label>
+	                	<label for="towncity">Town / City *</label>
 	                  <input type="text" class="form-control" required="" name="city" placeholder="">
 	                </div>
 		            </div>
@@ -110,30 +107,30 @@
 		            <div class="w-100"></div>
 		            <div class="col-md-6">
 	                <div class="form-group">
-	                	<label for="phone">Phone</label>
+	                	<label for="phone">Phone *</label>
 	                  <input type="text" class="form-control" name="phone" required="" placeholder="">
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
-	                	<label for="emailaddress">Email Address</label>
+	                	<label for="emailaddress">Email Address *</label>
 	                  <input type="text" class="form-control" name="email" required="" placeholder="">
 	                </div>
 				</div>
-				<h3 class="billing-heading mb-4">Payment Method</h3>
+				<h3 class="billing-heading mb-4">Payment by:</h3>
 				<div class="col-md-12">
 					<div class="radio">
-					   <label><input type="radio" name="optradio" value="bhim" class="mr-2" required=""> BHIM-UPI</label>
+					   <label><input type="radio" name="optradio" value="card" class="mr-2" required="">Credit Card</label>
 					</div>
 				</div>
 				<div class="col-md-12">
 					<div class="radio">
-					   <label><input type="radio" name="optradio" value="paytm" class="mr-2" required=""> Paytm</label>
+					   <label><input type="radio" name="optradio" value="fps" class="mr-2" required="">FPS</label>
 					</div>
 				</div>
 				<div class="col-md-12">
 					<div class="radio">
-					   <label><input type="radio" name="optradio" value="COD" class="mr-2" required=""> Cash-On-Delivery</label>
+					   <label><input type="radio" name="optradio" value="cash" class="mr-2" required=""> Cash-On-Delivery</label>
 					</div>
 				</div>
 				

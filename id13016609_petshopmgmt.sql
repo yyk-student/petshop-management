@@ -2,10 +2,6 @@
 -- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3308
--- Generation Time: Apr 08, 2020 at 07:44 AM
--- Server version: 8.0.18
--- PHP Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -13,16 +9,6 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `id13016609_petshopmgmt`
---
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `animals`
@@ -44,8 +30,6 @@ INSERT INTO `animals` (`animalid`, `name`, `imagename`) VALUES
 (1, 'Dog', '5e8cc560bfe058.97574227.jpg'),
 (6, 'Cat', '5e8cc4e6cbfd77.14635789.jpg'),
 (7, 'Fish', '5e8cc57e283591.31535601.jpg');
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `cart`

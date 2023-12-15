@@ -43,7 +43,7 @@ if ($res = mysqli_query($conn, $sql)) {
             <table> 
             <thead><tr>
                 <th>
-                    <input type="search" class="form-control" style="width:860px"placeholder="Search products..." name="prod_search" id="prod_search" required=""></input>
+                    <input type="search" class="form-control" style="width:860px"placeholder="Search products..." name="prod_search" id="prod_search"></input>
                 </th>
                 <th>
                             <select name="search" class ="form-control" id="pet_name" required="">
@@ -123,7 +123,7 @@ if ($res = mysqli_query($conn, $sql)) {
                                     echo' </h4>
 									</td>
 									
-									<td class="price"><h4>₹'.$row['mrp'].'</h4></td>
+									<td class="price"><h4>$'.$row['mrp'].'</h4></td>
                                     
                                 <form action="phps/add_to_cart.php" class="input-group col-md-8 d-flex mb-3" method="GET">
                                     <td class="price">
@@ -172,24 +172,26 @@ if ($res = mysqli_query($conn, $sql)) {
     } 
     else { 
         echo '<section class="ftco-section ftco-cart">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 ftco-animate">
-                    <div class="cart-list">
-                        <table class="table">
-                            <thead class="thead-primary">
-                            <tr class="text-center">
-                                <th colspan="5">No product found</th>
-                            </tr>
-                        </thead>
-                        </table>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 ftco-animate">
+                        <div class="cart-list">
+                            <table class="table">
+                                <thead class="thead-primary">
+                                <tr class="text-center">
+                                    <th colspan="5">No product found</th>
+                                </tr>
+                                </thead>
+                            </table>
+                            <a href="home.html" class="btn btn-primary py-3 px-5">Go back to the home page</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>'; unset($_SESSION['pet_id_filter_user']);
+        </section>';
+        unset($_SESSION['pet_id_filter_user']);
         unset($_SESSION['prod_search']);
-    } 
+    }
 } 
 else { 
     echo "ERROR: Could not able to execute $sql. ".mysqli_error($conn); 

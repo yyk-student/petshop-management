@@ -24,9 +24,9 @@ if($res = mysqli_query($conn, $query)){
         header("location: /petshop_management/home");
     }else{
         //echo "failure";
-        $_SESSION["message"] = "Failed to login !!!";
+        $_SESSION["message"] = "Incorrect email or password";
         //echo $_SESSION["message"];
-       header("location: /petshop_management/index.html");
+        header("location: /petshop_management/index.html?message=wrong_credentials");
     }
 }
 ?>

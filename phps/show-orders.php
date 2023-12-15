@@ -197,7 +197,7 @@ if ($shippedOrdersRes = mysqli_query($conn, $shippedOrders)) {
     					</p>
     					<p class="d-flex total-price">
     						<span>Total Earning</span>
-    						<span>₹'.$invoice_amount.'</span>
+    						<span>$'.$invoice_amount.'</span>
     					</p>
     				</div>
     			</div>

@@ -57,10 +57,10 @@
           <form action="phps/loginhelper.php" class="bg-white p-5 contact-form" style="border-radius: 10px 10px 10px 10px;margin-bottom: 30px;">
               <h7><a href="admin-sign-in.html">Are you an administrator? Click here.</a></h7>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Email ID" name="emailid">
+                <input type="text" class="form-control" placeholder="Email ID" name="emailid" required="">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password" name="password"></div>
+                <input type="password" class="form-control" placeholder="Password" name="password" required=""></div>
                 <div class="form-group">
                   <input type="submit" value="Sign In" class="btn btn-primary py-3 px-5">
               </div>
@@ -100,9 +100,15 @@
   <script src="js/main.js"></script>
 
   <script>
-    $(window).load(function () {
-      $('#messageModal').modal('show');
-    });
+    window.onload = function() {
+      var urlParams = new URLSearchParams(window.location.search);
+      var message = urlParams.get('message');
+  
+      if (message === 'wrong_credentials') {
+          alert('Wrong email or password');
+      }
+
+    };
   </script>
     
   </body>

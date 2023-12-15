@@ -1,14 +1,7 @@
-<?php
-  session_start();
-  $userid=$_SESSION['userid'];
-  if($_SESSION["user"] == NULL ){
-    header("location: index.html");
-  }
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>PetShop - home</title>
+    <title>PetShop - Successful!</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -34,14 +27,27 @@
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
-  <body style="background-image: url('images/petshop-bg.jpg'); background-repeat: no-repeat; background-attachment: fixed;">
+  <body>
 
-  <?php include 'phps/show-inventory-user.php';?>
+    <section class="ftco-section contact-section" style="background-image: url('images/petshop.jpg'); background-size: cover;"><div class="container">
+        
+
+        <div class="container bg-white" style="align-self: center; align-items: center;">
+          <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-2 ftco-animate text-center"style="background-color: white; border-radius: 10px 10px 10px 10px;margin-bottom: 30px;">
+              <h1 class="mb-0 bread">Sign Up Successful!</h1>
+            </div>
+            <div class="bg-white p-5 contact-form" style="border-radius: 10px 10px 10px 10px;margin-bottom: 30px;">
+                <a href="home.html">Return to home page</a>
+            </div>
+        </div>
+
+    </section>
+  
+
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-  <!-- show message modal -->
-  <?php include "phps/show-message.php" ?>
-  <!-- //show message modal -->
+
 
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -59,48 +65,25 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
+
+  <!-- script for password match -->
   <script>
-    $(window).load(function () {
-      $('#messageModal').modal('show');
-    });
+    window.onload = function () {
+      document.getElementById("password").onchange = validatePassword;
+      document.getElementById("password1").onchange = validatePassword;
+    }
+
+    function validatePassword() {
+      var pass2 = document.getElementById("password1").value;
+      var pass1 = document.getElementById("password").value;
+      if (pass1 != pass2)
+        document.getElementById("password1").setCustomValidity("Passwords Don't Match");
+      else
+        document.getElementById("password").setCustomValidity('');
+      //empty string means no validation error
+    }
   </script>
-
-<script>
-  $(document).ready(function(){
-      
-  });
-  function increment_count(button_name,input_name){
-    var quantity_textfield = document.getElementById(input_name);
-    var button1 = document.getElementById(button_name);
-     // Stop acting like a button
-     //button1.preventDefault();
-          // Get the field name
-          var quantity = parseInt(quantity_textfield.value);
-          
-          // If is not undefined
-              
-              quantity_textfield.value = quantity + 1 ;
-
-            
-              // Increment
-  }
-
-  function decrement_count(button_name,input_name){
-    var quantity_textfield = document.getElementById(input_name);
-    var button1 = document.getElementById(button_name);
-     // Stop acting like a button
-     //button1.preventDefault();
-          // Get the field name
-          var quantity = parseInt(quantity_textfield.value);
-          
-          // If is not undefined
-          if(quantity>0){
-              quantity_textfield.value = quantity - 1;
-          }
-            
-              // Increment
-  }
-</script>
-
+  <!-- script for password match -->
+    
   </body>
 </html>

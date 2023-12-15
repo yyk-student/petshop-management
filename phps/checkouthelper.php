@@ -47,7 +47,7 @@ if($res=mysqli_query($conn,$query)){
             }
             $_SESSION["message"] = "Order Placed Successfully!";
             $_SESSION['message_desc']= "You can continue shopping!";
-header("location:/petshop_management/home");
+header("location:/petshop_management/thank-you.html");
     
     }else{
         echo "Cart data retriaval failed!";
