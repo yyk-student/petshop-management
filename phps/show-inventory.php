@@ -75,7 +75,7 @@ if ($res = mysqli_query($conn, $sql)) {
                                     echo' </p>
 									</td>
 									
-									<td class="price">Rs. '.$row['mrp'].'</td>
+									<td class="price">$'.$row['mrp'].'</td>
 									
 									<td class="price">'.$row['qty'].'</td>
                                     

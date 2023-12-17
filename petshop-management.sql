@@ -29,7 +29,10 @@ CREATE TABLE IF NOT EXISTS `animals` (
 INSERT INTO `animals` (`animalid`, `name`, `imagename`) VALUES
 (1, 'Dog', '5e8cc560bfe058.97574227.jpg'),
 (6, 'Cat', '5e8cc4e6cbfd77.14635789.jpg'),
-(7, 'Fish', '5e8cc57e283591.31535601.jpg');
+(7, 'Fish', '5e8cc57e283591.31535601.jpg')
+(8, 'Hamster', ''),
+(9, 'Parrot', '');
+
 
 --
 -- Table structure for table `cart`
@@ -40,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `cart` (
   `userid` int(255) NOT NULL,
   `prodid` int(255) NOT NULL,
   `qty` int(255) NOT NULL,
+  `mrp` int(255) NOT NULL,
   UNIQUE KEY `userid` (`userid`,`prodid`),
   KEY `prod_id_foreign_key_in_cart` (`prodid`),
   KEY `user_id_foreign_key_in_cart` (`userid`)
@@ -49,9 +53,9 @@ CREATE TABLE IF NOT EXISTS `cart` (
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`userid`, `prodid`, `qty`) VALUES
-(7, 6, 1),
-(8, 6, 1);
+INSERT INTO `cart` (`userid`, `prodid`, `qty`, `mrp`) VALUES
+(7, 6, 1, 0),
+(8, 6, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -180,3 +184,17 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- address table
+DROP TABLE IF EXISTS `address`
+CREATE TABLE IF NOT EXISTS `address` (
+  `fname` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `lname` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `country` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `street` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `apt` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `zipcode` int(100) NOT NULL,
+  `phone` int(100) NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `payment_method` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

@@ -64,23 +64,18 @@ if ($res = mysqli_query($conn, $sql)) {
                                         
                                         <td class="price">$'.$product_mrp.'</td>
                                         
-                                        <td class="quantity">
-                                            <span id="quantity-<?php echo $product_id; ?>"><?php echo $product_qty; ?></span>
-                                            <div id="edit-buttons-' . $product_id . '" class="edit-buttons" style="display: none;">
-                                                <button class="decrement-button" onclick="decrementQuantity(' . $product_id . ')">-</button>
-                                                <button class="increment-button" onclick="incrementQuantity(' . $product_id . ')">+</button>
-                                            </div>
-                                        </td>
+                                        <td class="price">'.$product_qty.'</td>
                                         
-                                        <td class="action">
-                                            <button class="edit-button" onclick="showEditButtons(' . $product_id . ')">Edit</button>
-                                            <button class="delete-button" onclick="deleteCartItem(' . $product_id . ')">Delete</button>
-                                        </td>
+                                        <td class="product-remove">
+                                        <a href="#" onclick="javascript:delete_form_variables(\''.$row['prodid'].'\');" data-toggle="modal" aria-pressed="false" data-target="#deleteInventoryModal">
+                                            <span class="ion-ios-close"></span>
+                                        </a>
+                                    </td>   
                                     </tr>
                                     
                                     </tbody>';
                                     $subtotal=$product_qty*$product_mrp;
-                                    $total=$total+$subtotal;
+                                    $total=$total+$subtotal + 40;
                                             }
                                         }
                                     
@@ -107,11 +102,11 @@ if ($res = mysqli_query($conn, $sql)) {
     					<h3>Cart Totals</h3>
     					<p class="d-flex">
     						<span>Subtotal</span>
-    						<span>$'.$total.'</span>
+    						<span>$'.$subtotal.'</span>
     					</p>
     					<p class="d-flex">
     						<span>Delivery</span>
-    						<span>$0.00</span>
+    						<span>$40</span>
     					</p>
     					<hr>
     					<p class="d-flex total-price">
@@ -185,50 +180,50 @@ mysqli_close($conn);
 
 <script>
    
-    // Function to show the increment and decrement buttons and hide the "Edit" button
-    function incrementQuantity(productId) {
-        var quantityElement = document.getElementById('quantity-' + productId);
-        var quantity = parseInt(quantityElement.innerHTML);
-        quantity++;
-        quantityElement.innerHTML = quantity;
-        updateTotalAmount();
-    }
+//     // Function to show the increment and decrement buttons and hide the "Edit" button
+//     function incrementQuantity(productId) {
+//         var quantityElement = document.getElementById('quantity-' + productId);
+//         var quantity = parseInt(quantityElement.innerHTML);
+//         quantity++;
+//         quantityElement.innerHTML = quantity;
+//         updateTotalAmount();
+//     }
     
-    function decrementQuantity(productId) {
-  var quantityElement = document.getElementById('quantity-' + productId);
-  var quantity = parseInt(quantityElement.innerHTML);
-  if (quantity > 1) {
-    quantity--;
-    quantityElement.innerHTML = quantity;
-    updateTotalAmount();
-  }
-}
+//     function decrementQuantity(productId) {
+//   var quantityElement = document.getElementById('quantity-' + productId);
+//   var quantity = parseInt(quantityElement.innerHTML);
+//   if (quantity > 1) {
+//     quantity--;
+//     quantityElement.innerHTML = quantity;
+//     updateTotalAmount();
+//   }
+// }
 
-function updateTotalAmount() {
-  var totalAmountElement = document.getElementById('total-amount');
-  var totalAmount = 0;
+// function updateTotalAmount() {
+//   var totalAmountElement = document.getElementById('total-amount');
+//   var totalAmount = 0;
 
-  // Loop through all the product rows
-  var productRows = document.getElementsByClassName('product-row');
-  for (var i = 0; i < productRows.length; i++) {
-    var quantityElement = productRows[i].querySelector('.quantity span');
-    var priceElement = productRows[i].querySelector('.price');
-    var quantity = parseInt(quantityElement.innerHTML);
-    var price = parseFloat(priceElement.innerHTML.replace('$', ''));
-    var subtotal = quantity * price;
-    totalAmount += subtotal;
-  }
+//   // Loop through all the product rows
+//   var productRows = document.getElementsByClassName('product-row');
+//   for (var i = 0; i < productRows.length; i++) {
+//     var quantityElement = productRows[i].querySelector('.quantity span');
+//     var priceElement = productRows[i].querySelector('.price');
+//     var quantity = parseInt(quantityElement.innerHTML);
+//     var price = parseFloat(priceElement.innerHTML.replace('$', ''));
+//     var subtotal = quantity * price;
+//     totalAmount += subtotal;
+//   }
 
-  totalAmountElement.innerHTML = '$' + totalAmount.toFixed(2);
-}
+//   totalAmountElement.innerHTML = '$' + totalAmount.toFixed(2);
+// }
 
-document.addEventListener('DOMContentLoaded', function() {
-  updateTotalAmount();
-});
+// document.addEventListener('DOMContentLoaded', function() {
+//   updateTotalAmount();
+// });
     
-    function showEditButtons(productId) {
-        var editButtonsElement = document.getElementById("edit-buttons-" + productId);
-        editButtonsElement.style.display = "block";
-    }
+//     function showEditButtons(productId) {
+//         var editButtonsElement = document.getElementById("edit-buttons-" + productId);
+//         editButtonsElement.style.display = "block";
+//     }
 
 </script>
