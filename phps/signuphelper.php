@@ -17,13 +17,14 @@ require 'C:/xampp/htdocs/petshop_management/vendor/phpmailer/phpmailer/src/Excep
 require 'C:/xampp/htdocs/petshop_management/vendor/autoload.php';
 //vendor/autoload.php
 
-$mail = new PHPMailer(true);
+
 
 $fname = $_GET['fname'];
 $lname = $_GET['lname'];
 $emailid = $_GET['emailid'];
 $password = $_GET['password'];
 $password1 = $_GET['password1'];
+$code = mysqli_real_escape_string($conn, md5(rand()));
 
 if ($password != $password1) {
     echo '<script>alert("Passwords do not match!");history.go(-1)</script>';
@@ -43,9 +44,38 @@ if ($password != $password1) {
         
         if ($conn->query($query) === TRUE) {
             echo "User details updated!";
+            $query1 = "INSERT INTO credentials(userid, emailid, password) VALUES ((SELECT userid FROM user_details WHERE emailid='$emailid'), '$emailid', '$password1')";
+
+            $mail = new PHPMailer(true);
+
+            try {
+                //Server settings
+                $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+                $mail->isSMTP();                                            //Send using SMTP
+                $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
+                $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                $mail->Username   = 'mailyanyukan@gmail.com';               //SMTP username
+                $mail->Password   = '74Ax28x5';                             //SMTP password
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+                $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+                //Recipients
+                $mail->setFrom('mailyanyukan@gmail.com');
+                $mail->addAddress($email);
+
+                //Content
+                $mail->isHTML(true);                                  //Set email format to HTML
+                $mail->Subject = 'no reply';
+                $mail->Body    = 'Here is the verification link <b><a href="http://localhost/petshop_management/?verification='.$code.'">http://localhost/petshop_management/?verification='.$code.'</a></b>';
+
+                $mail->send();
+                echo 'Message has been sent';
+            } catch (Exception $e) {
+                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            }
             
             // Insert new credentials
-            $query1 = "INSERT INTO credentials(userid, emailid, password) VALUES ((SELECT userid FROM user_details WHERE emailid='$emailid'), '$emailid', '$password1')";
+            
 			
 			// Generate a unique token for authentication
 			$token = bin2hex(random_bytes(32));
