@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `animals` (
 INSERT INTO `animals` (`animalid`, `name`, `imagename`) VALUES
 (1, 'Dog', '5e8cc560bfe058.97574227.jpg'),
 (6, 'Cat', '5e8cc4e6cbfd77.14635789.jpg'),
-(7, 'Fish', '5e8cc57e283591.31535601.jpg')
+(7, 'Fish', '5e8cc57e283591.31535601.jpg'),
 (8, 'Hamster', ''),
 (9, 'Parrot', '');
 
